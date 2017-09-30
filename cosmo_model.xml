@@ -1,0 +1,191 @@
+<mujoco model="cosmo">
+    <compiler angle="radian" inertiafromgeom="true"/>
+    <option timestep="0.0002" iterations="50" apirate="50" gravity="0 0 -9.81"/>
+    <size njmax="600" nconmax="150" nstack="300000"/>
+    <default>
+      <default class="MPL">
+        <geom material="MatMesh" contype="1" conaffinity="1" condim="4" margin="0.001"/>
+       	<joint limited="true" armature="0" solreflimit="0.0002 1" solimplimit="0.9 0.95 0.001"/>
+       	<site material="MatTouch" type="ellipsoid" group="3"/>
+      </default>
+      <default class="IMU">
+      <site material="MatIMU" type="box" group="4"/>
+      </default>
+      <default class="free">
+        <joint type="free" armature="0" limited="false"/>
+      </default>
+    </default>
+    <statistic extent="1" center="0 -0.2 0.2"/>
+    <visual>
+      <quality shadowsize="2048"/>
+      <map fogstart="6" fogend="10"/>
+      <headlight diffuse=".6 .6 .6" specular="0 0 0"/>
+    </visual>
+    <asset>
+      <texture type="skybox" builtin="gradient" rgb1=".4 .6 .8" rgb2="0 0 0" width="100" height="100"/>
+      <texture name="groundplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 .2 .3" width="100" height="100"/>
+      <material name="groundplane" texture="groundplane"/>
+      <material name="table2d" reflectance="0.3" rgba=".8 .8 .8 1"/>
+      <material name="tablecube" rgba=".8 .8 .8 1"/>
+      <material name="MatTouch" rgba=".3 .9 .3 .3"/>
+      <material name="MatIMU" rgba=".1 .1 .9 1"/>
+      <material name="MatMesh" rgba=".1 .1 .9 1"/>
+    </asset>
+    <contact>
+        <exclude body1="UPPERARM" body2="FOREARM"/>
+        <exclude body1="FOREARM" body2="PALM"/>
+        <exclude body1="PALM" body2="THUMB1"/>
+        <exclude body1="PALM" body2="INDEX1"/>
+        <exclude body1="PALM" body2="MIDDLE1"/>
+        <exclude body1="PALM" body2="RING1"/>
+        <exclude body1="PALM" body2="PINKY1"/>
+        <exclude body1="THUMB1" body2="THUMB2"/>
+        <exclude body1="INDEX1" body2="INDEX2"/>
+        <exclude body1="MIDDLE1" body2="MIDDLE2"/>
+        <exclude body1="RING1" body2="RING2"/>
+        <exclude body1="PINKY1" body2="PINKY2"/>
+        <exclude body1="THUMB2" body2="THUMB3"/>
+        <exclude body1="INDEX2" body2="INDEX3"/>
+        <exclude body1="MIDDLE2" body2="MIDDLE3"/>
+        <exclude body1="RING2" body2="RING3"/>
+        <exclude body1="PINKY2" body2="PINKY3"/>
+        <!-- Start Exclude thumb from other fingers -->
+        <exclude body1="THUMB1" body2="INDEX1"/>
+        <exclude body1="THUMB1" body2="INDEX2"/>
+        <exclude body1="THUMB1" body2="INDEX3"/>
+        <exclude body1="THUMB2" body2="INDEX1"/>
+        <exclude body1="THUMB2" body2="INDEX2"/>
+        <exclude body1="THUMB2" body2="INDEX3"/>
+        <exclude body1="THUMB3" body2="INDEX1"/>
+        <exclude body1="THUMB3" body2="INDEX2"/>
+        <exclude body1="THUMB3" body2="INDEX3"/>
+        <exclude body1="THUMB1" body2="MIDDLE1"/>
+        <exclude body1="THUMB1" body2="MIDDLE2"/>
+        <exclude body1="THUMB1" body2="MIDDLE3"/>
+        <exclude body1="THUMB2" body2="MIDDLE1"/>
+        <exclude body1="THUMB2" body2="MIDDLE2"/>
+        <exclude body1="THUMB2" body2="MIDDLE3"/>
+        <exclude body1="THUMB3" body2="MIDDLE1"/>
+        <exclude body1="THUMB3" body2="MIDDLE2"/>
+        <exclude body1="THUMB3" body2="MIDDLE3"/>
+        <exclude body1="THUMB1" body2="RING1"/>
+        <exclude body1="THUMB1" body2="RING2"/>
+        <exclude body1="THUMB1" body2="RING3"/>
+        <exclude body1="THUMB2" body2="RING1"/>
+        <exclude body1="THUMB2" body2="RING2"/>
+        <exclude body1="THUMB2" body2="RING3"/>
+        <exclude body1="THUMB3" body2="RING1"/>
+        <exclude body1="THUMB3" body2="RING2"/>
+        <exclude body1="THUMB3" body2="RING3"/>
+        <exclude body1="THUMB1" body2="PINKY1"/>
+        <exclude body1="THUMB1" body2="PINKY2"/>
+        <exclude body1="THUMB1" body2="PINKY3"/>
+        <exclude body1="THUMB2" body2="PINKY1"/>
+        <exclude body1="THUMB2" body2="PINKY2"/>
+        <exclude body1="THUMB2" body2="PINKY3"/>
+        <exclude body1="THUMB3" body2="PINKY1"/>
+        <exclude body1="THUMB3" body2="PINKY2"/>
+        <exclude body1="THUMB3" body2="PINKY3"/>
+        <!-- End Exclude thumb from other fingers -->
+    </contact>
+    <worldbody>
+      <light directional="false" cutoff="35" exponent="10" diffuse=".7 .7 .7" pos="0.4 -0.2 1.5" dir="-0.4 0.2 -1.5" specular=".3 .3 .3"/>
+      <camera name="fixed" pos="0 -0.7 0.7" zaxis="0 -1 1" fovy="45" ipd="0.068"/>
+      <body childclass="MPL" name="T" pos="0 -0.7 0.25">
+        <geom type="box" size="0.19 0.075 0.245" pos="0 0 0" mass= "38.2980"/>
+        <body name= "UPPERARM" pos="0.24 0 0.245">
+          <geom type= "cylinder" fromto="0 0 0 0 0 -0.3" size="0.04" mass= "1.9976"/>
+          <joint name="T_UPPERARM_X" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.75 3.1416"/>
+          <joint name="T_UPPERARM_Y" type="hinge" pos="0 0 0" axis="0 1 0" range="-3.1 0.75"/>
+          <joint name="T_UPPERARM_Z" type="hinge" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/> 
+          <body name= "FOREARM" pos="0 0 -0.3" quat="0.7071 0.7071 0 0">
+            <geom type= "cylinder" fromto="0 0 0 0 0 -0.27" size="0.035" mass= "1.1053"/>
+            <joint name= "UPPERARM_FOREARM" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.40 2.2689"/>
+            <body name="PALM" pos="0 0 -0.3075" quat="0.7071 0 0 0.7071">
+              <geom type="box" size="0.045 0.0125 0.0375" mass= "0.3148"/>
+              <site name="palm_center" pos="0 0 -0.3075" size="0.01 0.01 0.01"/>
+              <joint name="FOREARM_PALM_Z" type="hinge" pos="0 0 0.05" axis="0 0 1" range="-1.5708 1.5708" stiffness=".25" springref="0" damping="0.01"/>
+              <joint name="FOREARM_PALM_Y" type="hinge" pos="0 0 0.05" axis="0 1 0" range="-0.5236 0.1745"/> 
+              <joint name="FOREARM_PALM_X" type="hinge" pos="0 0 0.05" axis="1 0 0" range="-1.2217 1.2217" stiffness=".5" springref="-.1571" damping="0.075"/>
+              <!-- Fingers -->
+              <!-- THUMB -->
+              <body name= "THUMB1" pos="0.0565 0 0.0375" quat="0.7071 0 0 -0.7071">
+                <geom type= "cylinder" fromto="0 0 0 0 0 -0.06" size="0.01" mass= "0.0650"/>
+                <!--<joint name="PALM_THUMB1_X" type="hinge" pos="0 0 0" axis="1 0 0" range="0 0.8727" stiffness=".5" springref=".646" damping="0.0142"/>-->
+                <!--<joint name="PALM_THUMB1_Y" type="hinge" pos="0 0 0" axis="0 1 0" range="0 0.8727" stiffness=".1" springref=".436" damping="0.0142"/>-->
+                <body name= "THUMB2" pos="0 0 -0.06">
+                  <geom type= "cylinder" fromto="0 0 0 0 0 -0.04" size="0.01" mass= "0.0193"/>
+                  <!--<joint name="THUMB1_THUMB2" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.7854 0" stiffness=".1" springref="-.559" damping="0.0105"/>-->
+                  <body name= "THUMB3" pos="0 0 -0.04">
+                    <geom type= "cylinder" fromto="0 0 0 0 0 -0.036" size="0.01" mass= "0.0263"/>
+                    <!--<joint name="THUMB2_THUMB3" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.5708 0" stiffness=".1" springref="-.279" damping="0.0081"/>-->
+                  </body>
+                </body>
+              </body>
+              <!-- INDEX -->
+              <body name= "INDEX1" pos="0.035 0 -0.0375" quat="0.7071 0 0 -0.7071">
+                <geom type= "cylinder" fromto="0 0 0 0 0 -0.05" size="0.01" mass= "0.0164"/>
+                <!--<joint name="PALM_INDEX1" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".559" damping="0.0142"/>-->
+                <body name= "INDEX2" pos="0 0 -0.05">
+                  <geom type= "cylinder" fromto="0 0 0 0 0 -0.03" size="0.009" mass= "0.0168"/>
+                  <!--<joint name="INDEX1_INDEX2" type="hinge" pos="0 0 0" axis="0 1 0" range="0 2.0944" stiffness=".1" springref=".489" damping="0.0105"/>-->
+                  <body name= "INDEX3" pos="0 0 -0.03">
+                    <geom type= "cylinder" fromto="0 0 0 0 0 -0.0225" size="0.0075" mass= "0.0132"/>
+                    <!--<joint name="INDEX2_INDEX3" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".384" damping="0.0081"/>-->
+                  </body>
+                </body>
+              </body>
+              <!-- MIDDLE -->
+              <body name= "MIDDLE1" pos="0.012 0 -0.0375" quat="0.7071 0 0 -0.7071">
+                <geom type= "cylinder" fromto="0 0 0 0 0 -0.06" size="0.01" mass= "0.0204"/>
+                <!--<joint name="PALM_MIDDLE1" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".541" damping="0.0142"/>-->
+                <body name= "MIDDLE2" pos="0 0 -0.06">
+                  <geom type= "cylinder" fromto="0 0 0 0 0 -0.04" size="0.009" mass= "0.0168"/>
+                  <!--<joint name="MIDDLE1_MIDDLE2" type="hinge" pos="0 0 0" axis="0 1 0" range="0 2.0944" stiffness=".1" springref=".960" damping="0.0105"/>-->
+                  <body name= "MIDDLE3" pos="0 0 -0.04">
+                    <geom type= "cylinder" fromto="0 0 0 0 0 -0.025" size="0.0075" mass= "0.0120"/>
+                    <!--<joint name="MIDDLE2_MIDDLE3" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".524" damping="0.0081"/>-->
+                  </body>
+                </body>
+              </body>
+              <!-- RING -->
+              <body name= "RING1" pos="-0.012 0 -0.0375" quat="0.7071 0 0 -0.7071">
+                <geom type= "cylinder" fromto="0 0 0 0 0 -0.055" size="0.01" mass= "0.0144"/>
+                <!--<joint name="PALM_RING1" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".646" damping="0.0142"/>-->
+                <body name= "RING2" pos="0 0 -0.055">
+                  <geom type= "cylinder" fromto="0 0 0 0 0 -0.035" size="0.009" mass= "0.0109"/>
+                  <!--<joint name="RING1_RING2" type="hinge" pos="0 0 0" axis="0 1 0" range="0 2.0944" stiffness=".1" springref=".943" damping="0.0105"/>-->
+                  <body name= "RING3" pos="0 0 -0.035">
+                    <geom type= "cylinder" fromto="0 0 0 0 0 -0.025" size="0.0075" mass= "0.0094"/>
+                    <!--<joint name="RING2_RING3" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".437" damping="0.0081"/>-->
+                  </body>
+                </body>
+              </body>
+              <!-- PINKY -->
+              <body name= "PINKY1" pos="-0.035 0 -0.0375" quat="0.7071 0 0 -0.7071">
+                <geom type= "cylinder" fromto="0 0 0 0 0 -0.045" size="0.01" mass= "0.0122"/>
+                <!--<joint name="PALM_PINKY1" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".855" damping="0.0142"/>-->
+                <body name= "PINKY2" pos="0 0 -0.045">
+                  <geom type= "cylinder" fromto="0 0 0 0 0 -0.025" size="0.009" mass= "0.0074"/>
+                  <!--<joint name="PINKY1_PINKY2" type="hinge" pos="0 0 0" axis="0 1 0" range="0 2.0944" stiffness=".1" springref=".541" damping="0.0105"/>-->
+                  <body name= "PINKY3" pos="0 0 -0.025">
+                   <geom type= "cylinder" fromto="0 0 0 0 0 -0.02" size="0.0075" mass= "0.0068"/>
+                   <!--<joint name="PINKY2_PINKY3" type="hinge" pos="0 0 0" axis="0 1 0" range="0 1.5708" stiffness=".1" springref=".367" damping="0.0081"/>-->
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </worldbody>
+    <actuator>
+      <motor joint="T_UPPERARM_X" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+      <motor joint="T_UPPERARM_Y" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+      <motor joint="T_UPPERARM_Z" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+      <motor joint="UPPERARM_FOREARM" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+      <motor joint="FOREARM_PALM_X" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+      <motor joint="FOREARM_PALM_Y" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+      <motor joint="FOREARM_PALM_Z" ctrlrange="-100.0 100.0" ctrllimited="true"/>
+    </actuator>
+</mujoco>

@@ -1,0 +1,310 @@
+
+
+exp_name:   cosmo_reach_09-29-17_14-18
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_14-52
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_14-54
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_14-54
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_15-45
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_15-45
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_15-59
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_15-59
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-29-17_16-00
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_09-18
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_09-56
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-00
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-02
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-04
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-04
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-07
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-18
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-23
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-40
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-42
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-46
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-51
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-52
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_10-53
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-02
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-07
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-07
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-17
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-19
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-20
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
+
+
+exp_name:   cosmo_reach_09-30-17_11-57
+alg_type:   AlgorithmBADMM
+alg_dyn:    DynamicsLRPrior
+alg_cost:   CostSum(CostAction, CostFK, CostFK)
+iterations: 12
+conditions: 4
+samples:    5
+
