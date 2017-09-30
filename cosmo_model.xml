@@ -2,35 +2,11 @@
     <compiler angle="radian" inertiafromgeom="true"/>
     <option timestep="0.0002" iterations="50" apirate="50" gravity="0 0 -9.81"/>
     <size njmax="600" nconmax="150" nstack="300000"/>
-    <default>
-      <default class="MPL">
-        <geom material="MatMesh" contype="1" conaffinity="1" condim="4" margin="0.001"/>
-       	<joint limited="true" armature="0" solreflimit="0.0002 1" solimplimit="0.9 0.95 0.001"/>
-       	<site material="MatTouch" type="ellipsoid" group="3"/>
-      </default>
-      <default class="IMU">
-      <site material="MatIMU" type="box" group="4"/>
-      </default>
-      <default class="free">
-        <joint type="free" armature="0" limited="false"/>
-      </default>
-    </default>
-    <statistic extent="1" center="0 -0.2 0.2"/>
     <visual>
       <quality shadowsize="2048"/>
       <map fogstart="6" fogend="10"/>
       <headlight diffuse=".6 .6 .6" specular="0 0 0"/>
     </visual>
-    <asset>
-      <texture type="skybox" builtin="gradient" rgb1=".4 .6 .8" rgb2="0 0 0" width="100" height="100"/>
-      <texture name="groundplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 .2 .3" width="100" height="100"/>
-      <material name="groundplane" texture="groundplane"/>
-      <material name="table2d" reflectance="0.3" rgba=".8 .8 .8 1"/>
-      <material name="tablecube" rgba=".8 .8 .8 1"/>
-      <material name="MatTouch" rgba=".3 .9 .3 .3"/>
-      <material name="MatIMU" rgba=".1 .1 .9 1"/>
-      <material name="MatMesh" rgba=".1 .1 .9 1"/>
-    </asset>
     <contact>
         <exclude body1="UPPERARM" body2="FOREARM"/>
         <exclude body1="FOREARM" body2="PALM"/>
@@ -91,22 +67,22 @@
     <worldbody>
       <light directional="false" cutoff="35" exponent="10" diffuse=".7 .7 .7" pos="0.4 -0.2 1.5" dir="-0.4 0.2 -1.5" specular=".3 .3 .3"/>
       <camera name="fixed" pos="0 -0.7 0.7" zaxis="0 -1 1" fovy="45" ipd="0.068"/>
-      <body childclass="MPL" name="T" pos="0 -0.7 0.25">
-        <geom type="box" size="0.19 0.075 0.245" pos="0 0 0" mass= "38.2980"/>
+      <body name="T" pos="0 -0.7 0.25">
+        <geom type="box" size="0.19 0.075 0.245" pos="0 0 0" mass= "2"/>
         <body name= "UPPERARM" pos="0.24 0 0.245">
-          <geom type= "cylinder" fromto="0 0 0 0 0 -0.3" size="0.04" mass= "1.9976"/>
-          <joint name="T_UPPERARM_X" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.75 3.1416"/>
-          <joint name="T_UPPERARM_Y" type="hinge" pos="0 0 0" axis="0 1 0" range="-3.1 0.75"/>
-          <joint name="T_UPPERARM_Z" type="hinge" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/> 
+          <geom type= "cylinder" fromto="0 0 0 0 0 -0.3" size="0.04" mass= "0.5"/>
+          <joint name="T_UPPERARM_X" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.5 1.5"/>
+          <joint name="T_UPPERARM_Y" type="hinge" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+          <joint name="T_UPPERARM_Z" type="hinge" pos="0 0 0" axis="0 0 1" range="-1.5 1.5708"/> 
           <body name= "FOREARM" pos="0 0 -0.3" quat="0.7071 0.7071 0 0">
-            <geom type= "cylinder" fromto="0 0 0 0 0 -0.27" size="0.035" mass= "1.1053"/>
-            <joint name= "UPPERARM_FOREARM" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.40 2.2689"/>
+            <geom type= "cylinder" fromto="0 0 0 0 0 -0.27" size="0.035" mass= "0.5"/>
+            <joint name= "UPPERARM_FOREARM" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.5 0"/>
             <body name="PALM" pos="0 0 -0.3075" quat="0.7071 0 0 0.7071">
               <geom type="box" size="0.045 0.0125 0.0375" mass= "0.3148"/>
               <site name="palm_center" pos="0 0 -0.3075" size="0.01 0.01 0.01"/>
-              <joint name="FOREARM_PALM_Z" type="hinge" pos="0 0 0.05" axis="0 0 1" range="-1.5708 1.5708" stiffness=".25" springref="0" damping="0.01"/>
-              <joint name="FOREARM_PALM_Y" type="hinge" pos="0 0 0.05" axis="0 1 0" range="-0.5236 0.1745"/> 
-              <joint name="FOREARM_PALM_X" type="hinge" pos="0 0 0.05" axis="1 0 0" range="-1.2217 1.2217" stiffness=".5" springref="-.1571" damping="0.075"/>
+              <joint name="FOREARM_PALM_Z" type="hinge" pos="0 0 0.05" axis="0 0 1" range="-1.3 1.3" stiffness=".25" springref="0" damping="0.01"/>
+              <joint name="FOREARM_PALM_Y" type="hinge" pos="0 0 0.05" axis="0 1 0" range="-1.2 1.2"/> 
+              <joint name="FOREARM_PALM_X" type="hinge" pos="0 0 0.05" axis="1 0 0" range="-0.2 0.2" stiffness=".5" springref="-.1571" damping="0.075"/>
               <!-- Fingers -->
               <!-- THUMB -->
               <body name= "THUMB1" pos="0.0565 0 0.0375" quat="0.7071 0 0 -0.7071">
@@ -177,6 +153,10 @@
             </body>
           </body>
         </body>
+      </body>
+      <body name="TARGET" pos="0.2 -0.2 0.25">
+        <geom type="sphere" size="0.05"/>
+        <!--<site name="TARGET" pos="0.0 -2 0.25" size="0.01 0.01 0.01"/>-->
       </body>
     </worldbody>
     <actuator>
