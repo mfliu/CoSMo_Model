@@ -21,7 +21,7 @@ from gps.algorithm.policy.policy_prior_gmm import PolicyPriorGMM
 from gps.algorithm.policy_opt.tf_model_example import tf_network
 from gps.proto.gps_pb2 import JOINT_ANGLES, JOINT_VELOCITIES, END_EFFECTOR_POINTS, END_EFFECTOR_POINT_VELOCITIES, ACTION
 from gps.gui.config import generate_experiment_info
-from gps.algorithm.cost.cost_utils import RAMP_CONSTANT
+from gps.algorithm.cost.cost_utils import RAMP_QUADRATIC
 
 ALGORITHM_NN_LIBRARY = "tf"
 
@@ -33,7 +33,7 @@ SENSOR_DIMS = {
         ACTION:7,
         }
 
-GAINS = np.array([500, 500, 500, 1, 0.01, 0.0025, 0.0025]) 
+GAINS = np.array([0.5, 0.5, 0.5, 0.2, 0.0025, 0.0025, 0.0025]) 
 
 BASE_DIR = '/'.join(str.split(gps_filepath, '/')[:-2])
 EXP_DIR = BASE_DIR + '/../experiments/CoSMo/'
@@ -61,7 +61,7 @@ agent = {
     'conditions': common['conditions'],
     'pos_body_idx': np.array([4]),
     'pos_body_offset': [[np.array([0, 0, 0])]],
-    'T': 100,
+    'T': 250,
     'sensor_dims': SENSOR_DIMS,
     'state_include': [JOINT_ANGLES, JOINT_VELOCITIES, END_EFFECTOR_POINTS,
                       END_EFFECTOR_POINT_VELOCITIES],
@@ -81,7 +81,7 @@ algorithm = {
     'fixed_lg_step': 3,
     'kl_step': 1.0,
     'min_step_mult': 0.1,
-    'max_step_mult': 10.0,
+    'max_step_mult': 3.0,
     'sample_decrease_var': 0.05,
     'sample_increase_var': 0.5,
     'policy_sample_mode': 'replace'
@@ -111,7 +111,7 @@ fk_cost = [{
     'l1': 0.1,
     'l2': 10.0,
     'alpha': 1e-2,
-    'ramp_option': RAMP_CONSTANT,
+    'ramp_option': RAMP_QUADRATIC,
 } for i in xrange(common['conditions'])]
 
 algorithm['cost'] = [{
