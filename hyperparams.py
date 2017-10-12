@@ -26,15 +26,16 @@ from gps.algorithm.cost.cost_utils import RAMP_QUADRATIC
 ALGORITHM_NN_LIBRARY = "tf"
 
 SENSOR_DIMS = {
-        JOINT_ANGLES: 7,
-        JOINT_VELOCITIES: 7,
+        JOINT_ANGLES: 23,
+        JOINT_VELOCITIES: 23,
         END_EFFECTOR_POINTS: 3,
         END_EFFECTOR_POINT_VELOCITIES: 3,
-        ACTION:7,
+        ACTION:23,
         }
 
-GAINS = np.array([0.5, 0.5, 0.5, 0.2, 0.0025, 0.0025, 0.0025]) 
-
+GAINS = np.concatenate((np.array([0.5, 0.5, 0.5, 0.2, 0.0025, 0.003, 0.0025]), 
+    np.ones(16)*0.0001)) * 150
+print(GAINS)
 BASE_DIR = '/'.join(str.split(gps_filepath, '/')[:-2])
 EXP_DIR = BASE_DIR + '/../experiments/CoSMo/'
 
@@ -55,7 +56,7 @@ if not os.path.exists(common['data_files_dir']):
 agent = {
     'type': AgentMuJoCo,
     'filename': './mjc_models/cosmo_model.xml',
-    'x0': np.concatenate((np.array([0., 0., 0., 0, 0., 0., 0]), np.zeros(7))),
+    'x0': np.concatenate((np.zeros(23), np.zeros(23))),
     'dt': 0.05,
     'substeps': 5,
     'conditions': common['conditions'],
@@ -89,11 +90,11 @@ algorithm = {
 
 algorithm['init_traj_distr'] = {
     'type': init_lqr,
-    'init_gains':  1.0 / GAINS,
+    'init_gains': 70.0 / GAINS,
     'init_acc': np.zeros(SENSOR_DIMS[ACTION]),
-    'init_var': 1.0,
-    'stiffness': 1.0,
-    'stiffness_vel': 0.5,
+    'init_var': 50.0,
+    'stiffness': 30.0,
+    'stiffness_vel': 25,
     'final_weight': 50.0,
     'dt': agent['dt'],
     'T': agent['T'],
@@ -101,12 +102,12 @@ algorithm['init_traj_distr'] = {
 
 torque_cost = {
     'type': CostAction,
-    'wu': 1/GAINS * 1e-6,
+    'wu': 1e-60/GAINS,
 }
 
 fk_cost = [{
     'type': CostFK,
-    'target_end_effector': np.array([0.2, -0.2, 0.25]),
+    'target_end_effector': np.array([0.2, -0.2, 0.30]),
     'wp': np.array([1, 1, 1]),
     'l1': 0.1,
     'l2': 10.0,
