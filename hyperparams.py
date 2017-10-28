@@ -33,9 +33,8 @@ SENSOR_DIMS = {
         ACTION:23,
         }
 
-GAINS = np.concatenate((np.array([0.5, 0.5, 0.5, 0.2, 0.0025, 0.003, 0.0025]), 
+GAINS = np.concatenate((np.array([0.5, 0.5, 0.5, 0.5, 0.0025, 0.0025, 0.0025]), 
     np.ones(16)*0.0001)) * 150
-print(GAINS)
 BASE_DIR = '/'.join(str.split(gps_filepath, '/')[:-2])
 EXP_DIR = BASE_DIR + '/../experiments/CoSMo/'
 
@@ -62,7 +61,7 @@ agent = {
     'conditions': common['conditions'],
     'pos_body_idx': np.array([4]),
     'pos_body_offset': [[np.array([0, 0, 0])]],
-    'T': 250,
+    'T': 500,
     'sensor_dims': SENSOR_DIMS,
     'state_include': [JOINT_ANGLES, JOINT_VELOCITIES, END_EFFECTOR_POINTS,
                       END_EFFECTOR_POINT_VELOCITIES],
@@ -74,7 +73,7 @@ agent = {
 algorithm = {
     'type': AlgorithmBADMM,
     'conditions': common['conditions'],
-    'iterations': 12,
+    'iterations': 2000,
     'lg_step_schedule': np.array([1e-2]), 
     'policy_dual_rate': 0.1,
     'init_pol_wt': 0.002,
@@ -90,11 +89,11 @@ algorithm = {
 
 algorithm['init_traj_distr'] = {
     'type': init_lqr,
-    'init_gains': 70.0 / GAINS,
+    'init_gains': 70 / GAINS,
     'init_acc': np.zeros(SENSOR_DIMS[ACTION]),
-    'init_var': 50.0,
-    'stiffness': 30.0,
-    'stiffness_vel': 25,
+    'init_var': 130.0,
+    'stiffness': 15.0,
+    'stiffness_vel': 5,
     'final_weight': 50.0,
     'dt': agent['dt'],
     'T': agent['T'],
@@ -107,7 +106,7 @@ torque_cost = {
 
 fk_cost = [{
     'type': CostFK,
-    'target_end_effector': np.array([0.2, -0.2, 0.30]),
+    'target_end_effector': np.array([0.2, -0.15, 0.25]),
     'wp': np.array([1, 1, 1]),
     'l1': 0.1,
     'l2': 10.0,

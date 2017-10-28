@@ -2,6 +2,10 @@
     <compiler angle="radian" inertiafromgeom="true"/>
     <option timestep="0.0002" iterations="50" apirate="50" gravity="0 0 -9.8"/>
     <size njmax="600" nconmax="150" nstack="300000"/>
+    <default class="ALL">
+      <geom contype="1" conaffinity="1" condim="3" margin="0.001"/>
+      <joint limited="true" armature="0" solreflimit="0.0002 1" solimplimit="0.9 0.95 0.001"/>
+    </default>
     <visual>
       <quality shadowsize="2048"/>
       <map fogstart="6" fogend="10"/>
@@ -67,7 +71,7 @@
     <worldbody>
       <light directional="false" cutoff="35" exponent="10" diffuse=".7 .7 .7" pos="0.4 -0.2 1.5" dir="-0.4 0.2 -1.5" specular=".3 .3 .3"/>
       <camera name="fixed" pos="0 -0.7 0.7" zaxis="0 -1 1" fovy="45" ipd="0.068"/>
-      <body name="T" pos="0 -0.7 0.25">
+      <body childclass="ALL" name="T" pos="0 -0.7 0.25">
         <geom type="box" size="0.19 0.075 0.245" pos="0 0 0" mass= "38"/>
         <body name= "UPPERARM" pos="0.24 0 0.245">
           <geom type= "cylinder" fromto="0 0 0 0 0 -0.3" size="0.04" mass= "1.7"/>
@@ -156,7 +160,7 @@
         </body>
       </body>
       <body name="TARGET" pos="0.2 -0.2 0.25">
-        <geom type="sphere" size="0.05"/>
+        <geom type="sphere" size="0.05" contype="1" conaffinity="1" condim="3" margin="0.001"/>
         <!--<site name="TARGET" pos="0.0 -2 0.25" size="0.01 0.01 0.01"/>-->
       </body>
     </worldbody>
