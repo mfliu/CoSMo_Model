@@ -61,7 +61,7 @@ agent = {
     'conditions': common['conditions'],
     'pos_body_idx': np.array([4]),
     'pos_body_offset': [[np.array([0, 0, 0])]],
-    'T': 500,
+    'T': 137,
     'sensor_dims': SENSOR_DIMS,
     'state_include': [JOINT_ANGLES, JOINT_VELOCITIES, END_EFFECTOR_POINTS,
                       END_EFFECTOR_POINT_VELOCITIES],
@@ -73,7 +73,7 @@ agent = {
 algorithm = {
     'type': AlgorithmBADMM,
     'conditions': common['conditions'],
-    'iterations': 2000,
+    'iterations': 100,
     'lg_step_schedule': np.array([1e-2]), 
     'policy_dual_rate': 0.1,
     'init_pol_wt': 0.002,
@@ -94,7 +94,7 @@ algorithm['init_traj_distr'] = {
     'init_var': 130.0,
     'stiffness': 15.0,
     'stiffness_vel': 5,
-    'final_weight': 50.0,
+    'final_weight': 30.0,
     'dt': agent['dt'],
     'T': agent['T'],
 }
@@ -106,7 +106,7 @@ torque_cost = {
 
 fk_cost = [{
     'type': CostFK,
-    'target_end_effector': np.array([0.2, -0.15, 0.25]),
+    'target_end_effector': np.array([0.1, -0.2, 0.2]),
     'wp': np.array([1, 1, 1]),
     'l1': 0.1,
     'l2': 10.0,
@@ -162,7 +162,7 @@ algorithm['policy_prior'] = {
 
 config = {
     'iterations': algorithm['iterations'],
-    'num_samples': 5,
+    'num_samples': 50,
     'verbose_trials': 1,
     'verbose_policy_trials': 1,
     'common': common,

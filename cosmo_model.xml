@@ -83,7 +83,7 @@
             <joint name= "UPPERARM_FOREARM" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.5 1.5"/>
             <body name="PALM" pos="0 0 -0.3075" quat="0.7071 0 0 0.7071">
               <geom type="box" size="0.045 0.0125 0.0375" mass= "0.3148"/>
-              <site name="palm_center" pos="0 0 0" size="0.01 0.01 0.01"/>
+              <site name="palm_center" pos="0.02 0.02 0" size="0.01 0.01 0.01"/>
               <joint name="FOREARM_PALM_Z" type="hinge" pos="0 0 0.05" axis="0 0 1" range="-1.5708 1.5708" stiffness=".25" springref="0" damping="0.01"/>
               <joint name="FOREARM_PALM_Y" type="hinge" pos="0 0 0.05" axis="0 1 0" range="-0.5236 0.1745"/> 
               <joint name="FOREARM_PALM_X" type="hinge" pos="0 0 0.05" axis="1 0 0" range="-1.2217 1.2217" stiffness=".5" springref="-.1571" damping="0.075"/>
@@ -159,7 +159,7 @@
           </body>
         </body>
       </body>
-      <body name="TARGET" pos="0.2 -0.2 0.25">
+      <body name="TARGET" pos="0.1 -0.2 0.2"> <!--pos="0.2 -0.2 0.25">-->
         <geom type="sphere" size="0.05" contype="1" conaffinity="1" condim="3" margin="0.001"/>
         <!--<site name="TARGET" pos="0.0 -2 0.25" size="0.01 0.01 0.01"/>-->
       </body>
